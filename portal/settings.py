@@ -25,7 +25,7 @@ SECRET_KEY = 'h(ddax$5=88!^r#=r0n+ql*m7w^r)==zob$sslab!1qv@yrudw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['users-portal.herokuapp.com']
+ALLOWED_HOSTS = ['https://users-portal.herokuapp.com']
 
 
 # Application definition
