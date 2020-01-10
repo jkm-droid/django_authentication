@@ -2,12 +2,25 @@ from .forms import UserRegistrationForm, EditProfileForm, ChangePasswordForm
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.shortcuts import render, redirect
 from django.contrib import messages
+import random
+import string
+
+def generate_random_token(stringlength=30):
+	__gen_token = string.ascii_letters + string.digits
+
+	return ''.join(random.choice(__gen_token) for i in range(stringlength))
 
 def home_view(request):
+	context = {}
 
-    template_name = "home.html"
+	template_name = "home.html"
+	if request.user.is_authenticated:
+		if request.method == 'GET':
+			unique_token = generate_random_token(30)
+			messages.info(request, 'token generated!')
+			context = {'unique_token': unique_token}
 
-    return render(request, template_name)
+	return render(request, template_name, context)
 
 def login_user_view(request):
 
